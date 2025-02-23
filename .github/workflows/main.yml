@@ -1,4 +1,4 @@
-name: github pages
+name: deploy dioxus in gh-pages branch
 
 on:
   push:
@@ -16,15 +16,3 @@ jobs:
           toolchain: "stable"
           outDirectory: "target/dx/landing/release/web/public"
           rootPath: "/home/runner/work/web/web"
-
-      - name: List files after build
-        run: ls -R ${{ inputs.rootPath }}/${{ inputs.outDirectory }}
-
-      - name: Check for index.html
-        run: |
-          if [ -f "${{ inputs.rootPath }}/${{ inputs.outDirectory }}/index.html" ]; then
-            echo "index.html exists"
-          else
-            echo "index.html does not exist"
-            exit 1
-          fi
