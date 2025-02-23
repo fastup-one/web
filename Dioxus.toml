@@ -8,7 +8,9 @@ out_dir = "docs"
 
 # HTML title tag content
 title = "landing"
-base_path = "web"
+
+# in case don't use custom domain
+#base_path = "web"
 
 # include `assets` in web platform
 [web.resource]
