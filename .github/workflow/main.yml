@@ -1,0 +1,30 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Dioxus Deploy"
+        uses: DioxusLabs/deploy-action@0.1.2
+        with:
+          buildMode: "release"
+          toolchain: "stable"
+          outDirectory: "target/dx/landing/release/web/public"
+          rootPath: "/home/runner/work/web/web"
+
+      - name: List files after build
+        run: ls -R ${{ inputs.rootPath }}/${{ inputs.outDirectory }}
+
+      - name: Check for index.html
+        run: |
+          if [ -f "${{ inputs.rootPath }}/${{ inputs.outDirectory }}/index.html" ]; then
+            echo "index.html exists"
+          else
+            echo "index.html does not exist"
+            exit 1
+          fi
