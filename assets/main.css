@@ -1,46 +1,106 @@
-/* App-wide styling */
-body {
-    background-color: #0f1116;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 20px;
+/* Animation definitions */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
-#hero {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.3; }
 }
 
-#links {
-    width: 400px;
-    text-align: left;
-    font-size: x-large;
-    color: white;
-    display: flex;
-    flex-direction: column;
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-#links a {
-    color: white;
-    text-decoration: none;
-    margin-top: 20px;
-    margin: 10px 0px;
-    border: white 1px solid;
-    border-radius: 5px;
-    padding: 10px;
+@keyframes particle-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(var(--random-x, 100px), var(--random-y, 100px));
+    opacity: 0;
+  }
 }
 
-#links a:hover {
-    background-color: #1f1f1f;
-    cursor: pointer;
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-#header {
-    max-width: 1200px;
+/* Reusable utility classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
+.animate-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
 
+.animate-fade-in {
+  opacity: 0;
+  animation: fade-in 0.8s ease-out forwards;
+}
 
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* Background effects */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center center;
+}
+
+/* Particles */
+#particles-container {
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: particle-move 20s linear infinite;
+  transform-origin: center;
+}
+
+/* Text gradient effect */
+.text-gradient-blue-purple {
+  background: linear-gradient(90deg, #60a5fa, #8b5cf6, #60a5fa);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Glow effects */
+.glow-effect {
+  box-shadow: 0 0 15px 2px rgba(96, 165, 250, 0.6);
+}
+
+.shadow-glow {
+  box-shadow: 0 4px 20px -2px rgba(96, 165, 250, 0.25);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 15px 2px rgba(96, 165, 250, 0.4);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg text-white font-semibold hover:opacity-90 transition-all;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white font-semibold hover:bg-white/20 transition-all;
+}

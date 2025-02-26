@@ -1,3 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply text-white font-sans antialiased;
+    background-color: #0B1120;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg text-white font-semibold hover:opacity-90 transition-all;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white font-semibold hover:bg-white/20 transition-all;
+  }
+  
+  .card {
+    @apply p-6 bg-white/5 border border-white/10 rounded-xl;
+  }
+}
+
+@layer utilities {
+  .text-gradient-blue-purple {
+    @apply bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent;
+  }
+  
+  .shadow-glow {
+    @apply shadow-[0_4px_20px_-2px_rgba(96,165,250,0.25)];
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+}
