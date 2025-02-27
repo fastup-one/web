@@ -1,141 +1,46 @@
-<<<<<<< HEAD
-/* Base styles */
+/* App-wide styling */
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: white;
-  background-color: #0f172a;
+    background-color: #0f1116;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
 }
 
-/* Animation keyframes */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+#hero {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0; }
+#links {
+    width: 400px;
+    text-align: left;
+    font-size: x-large;
+    color: white;
+    display: flex;
+    flex-direction: column;
 }
 
-@keyframes particle-float {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(var(--random-x1, 20px), var(--random-y1, -20px));
-  }
-  50% {
-    transform: translate(var(--random-x2, 10px), var(--random-y2, 10px));
-  }
-  75% {
-    transform: translate(var(--random-x3, -15px), var(--random-y3, -10px));
-  }
-  100% {
-    transform: translate(0, 0);
-  }
+#links a {
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+    margin: 10px 0px;
+    border: white 1px solid;
+    border-radius: 5px;
+    padding: 10px;
 }
 
-/* Animation classes */
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+#links a:hover {
+    background-color: #1f1f1f;
+    cursor: pointer;
 }
 
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+#header {
+    max-width: 1200px;
 }
 
-/* Particle effect */
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.5;
-  animation: particle-float 20s ease-in-out infinite;
-  z-index: 0;
-}
 
-.particle::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  filter: blur(1px);
-  opacity: 0.5;
-}
 
-/* Transitions */
-.transition-all {
-  transition: all 0.3s ease;
-}
-
-/* Links */
-a {
-  color: white;
-  text-decoration: none;
-}
-
-/* Grid background */
-.bg-grid {
-  background-image: 
-    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
-  position: absolute;
-  inset: 0;
-  opacity: 0.2;
-  z-index: 0;
-}
-
-/* Each particle gets random animation properties */
-.particle {
-  --random-x1: calc(random(40) * 1px);
-  --random-y1: calc(random(40) * 1px);
-  --random-x2: calc(random(40) * 1px);
-  --random-y2: calc(random(40) * 1px);
-  --random-x3: calc(random(40) * 1px);
-  --random-y3: calc(random(40) * 1px);
-}
-=======
-/* Additional custom CSS beyond Tailwind */
-body {
-  background-color: #000;
-  overflow-x: hidden;
-}
-
-.blur {
-  filter: blur(5px);
-}
-
-/* Background gradient animation settings */
-.bg-gradient-to-br {
-  background-size: 400% 400%;
-}
-
-.animate-gradient-xy {
-  animation: gradient-xy 15s ease infinite;
-}
-
-@keyframes gradient-xy {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Parallax effect for particles */
-.parallax {
-  will-change: transform;
-}
-
-/* Glow effect for text */
-.text-glow {
-  text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
-}
->>>>>>> refactor-001
