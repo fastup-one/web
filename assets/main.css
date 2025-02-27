@@ -1,46 +1,40 @@
-/* App-wide styling */
+/* Additional custom CSS beyond Tailwind */
 body {
-    background-color: #0f1116;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 20px;
+  background-color: #000;
+  overflow-x: hidden;
 }
 
-#hero {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.blur {
+  filter: blur(5px);
 }
 
-#links {
-    width: 400px;
-    text-align: left;
-    font-size: x-large;
-    color: white;
-    display: flex;
-    flex-direction: column;
+/* Background gradient animation settings */
+.bg-gradient-to-br {
+  background-size: 400% 400%;
 }
 
-#links a {
-    color: white;
-    text-decoration: none;
-    margin-top: 20px;
-    margin: 10px 0px;
-    border: white 1px solid;
-    border-radius: 5px;
-    padding: 10px;
+.animate-gradient-xy {
+  animation: gradient-xy 15s ease infinite;
 }
 
-#links a:hover {
-    background-color: #1f1f1f;
-    cursor: pointer;
+@keyframes gradient-xy {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-#header {
-    max-width: 1200px;
+/* Parallax effect for particles */
+.parallax {
+  will-change: transform;
 }
 
-
-
+/* Glow effect for text */
+.text-glow {
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+}
