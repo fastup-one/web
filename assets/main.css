@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Base styles */
 body {
   margin: 0;
@@ -96,3 +97,45 @@ a {
   --random-x3: calc(random(40) * 1px);
   --random-y3: calc(random(40) * 1px);
 }
+=======
+/* Additional custom CSS beyond Tailwind */
+body {
+  background-color: #000;
+  overflow-x: hidden;
+}
+
+.blur {
+  filter: blur(5px);
+}
+
+/* Background gradient animation settings */
+.bg-gradient-to-br {
+  background-size: 400% 400%;
+}
+
+.animate-gradient-xy {
+  animation: gradient-xy 15s ease infinite;
+}
+
+@keyframes gradient-xy {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Parallax effect for particles */
+.parallax {
+  will-change: transform;
+}
+
+/* Glow effect for text */
+.text-glow {
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+}
+>>>>>>> refactor-001
