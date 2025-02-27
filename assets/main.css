@@ -1,106 +1,98 @@
-/* Animation definitions */
+/* Base styles */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: white;
+  background-color: #0f172a;
+}
+
+/* Animation keyframes */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 0.3; }
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0; }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes particle-move {
+@keyframes particle-float {
   0% {
     transform: translate(0, 0);
   }
+  25% {
+    transform: translate(var(--random-x1, 20px), var(--random-y1, -20px));
+  }
+  50% {
+    transform: translate(var(--random-x2, 10px), var(--random-y2, 10px));
+  }
+  75% {
+    transform: translate(var(--random-x3, -15px), var(--random-y3, -10px));
+  }
   100% {
-    transform: translate(var(--random-x, 100px), var(--random-y, 100px));
-    opacity: 0;
+    transform: translate(0, 0);
   }
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Reusable utility classes */
+/* Animation classes */
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
 .animate-pulse {
-  animation: pulse 3s ease-in-out infinite;
+  animation: pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-.animate-fade-in {
-  opacity: 0;
-  animation: fade-in 0.8s ease-out forwards;
-}
-
-.animation-delay-200 {
-  animation-delay: 0.2s;
-}
-
-.animation-delay-400 {
-  animation-delay: 0.4s;
-}
-
-/* Background effects */
-.bg-grid {
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-  background-position: center center;
-}
-
-/* Particles */
-#particles-container {
-  pointer-events: none;
-}
-
+/* Particle effect */
 .particle {
   position: absolute;
   border-radius: 50%;
-  animation: particle-move 20s linear infinite;
-  transform-origin: center;
+  pointer-events: none;
+  opacity: 0.5;
+  animation: particle-float 20s ease-in-out infinite;
+  z-index: 0;
 }
 
-/* Text gradient effect */
-.text-gradient-blue-purple {
-  background: linear-gradient(90deg, #60a5fa, #8b5cf6, #60a5fa);
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 8s ease infinite;
+.particle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.5;
 }
 
-/* Glow effects */
-.glow-effect {
-  box-shadow: 0 0 15px 2px rgba(96, 165, 250, 0.6);
+/* Transitions */
+.transition-all {
+  transition: all 0.3s ease;
 }
 
-.shadow-glow {
-  box-shadow: 0 4px 20px -2px rgba(96, 165, 250, 0.25);
+/* Links */
+a {
+  color: white;
+  text-decoration: none;
 }
 
-.glow-hover:hover {
-  box-shadow: 0 0 15px 2px rgba(96, 165, 250, 0.4);
+/* Grid background */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  z-index: 0;
 }
 
-/* Button styles */
-.btn-primary {
-  @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg text-white font-semibold hover:opacity-90 transition-all;
-}
-
-.btn-secondary {
-  @apply px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white font-semibold hover:bg-white/20 transition-all;
+/* Each particle gets random animation properties */
+.particle {
+  --random-x1: calc(random(40) * 1px);
+  --random-y1: calc(random(40) * 1px);
+  --random-x2: calc(random(40) * 1px);
+  --random-y2: calc(random(40) * 1px);
+  --random-x3: calc(random(40) * 1px);
+  --random-y3: calc(random(40) * 1px);
 }
